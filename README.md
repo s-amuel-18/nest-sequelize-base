@@ -5,69 +5,71 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+<p align="center">
+  Proyecto base en Nest.js y sequelize
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+    <!-- <p align="center"> -->
 
-## Description
+## Descripción
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Proyecto base en Nest.js, TypeScript e integrado con sequelize.
 
-## Installation
+## Dependencias del proyecto
+
+1. [Node.js](https://nodejs.org/en/download) (Versión LTS)
+2. [Doker](https://www.docker.com/products/docker-desktop/)
+
+## Instalación
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Configuración principal
+
+1. Copiar archivo `.env.template` y renombrar por `.env`
+
+## Ejecución de la aplicación
 
 ```bash
-# development
-$ npm run start
+# Instalación de imágenes correspondientes y subida de contenedores
+$ docker-compose up -d
 
-# watch mode
+# Ejecución de aplicación en modo watch
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
+# Ejecución de migraciones para la creación de tablas
+$ npx sequelize db:migrate
+
+# Ejecución de seeders para la creación de data necesaria
+$ npx sequelize db:seed
 ```
 
-## Test
+## Documentación de la API
+
+El proyecto está documentado con [Swagger](https://swagger.io/docs/) siguiendo las practicas de OpenApi, la documentación de los endpoint se encuentra en la ruta.
+
+Ruta de documentación: `/api`
+
+## Base de datos y creación de tablas
+
+El proyecto implementa [Sequelize](https://sequelize.org/) como ORM y [Sequelize CLI](https://sequelize.org/docs/v7/cli/) para el control y gestión de migraciones.
+
+### Comandos básicos
 
 ```bash
-# unit tests
-$ npm run test
+# creación de migración
+$ npx sequelize migration:generate --name create_NOMBRE_TABLA_table
 
-# e2e tests
-$ npm run test:e2e
+# Alteración de campos de una tabla
+$ npx sequelize migration:generate --name alter_NOMBRE_TABLA_table
 
-# test coverage
-$ npm run test:cov
+# creación de seeder
+$ npx sequelize seed:generate --name seed_NOMBRE_SEEDER
+
+# Ejecución de migraciones
+$ npx sequelize db:migrate
+
+# Ejecución de seeders
+$ npx sequelize db:seed
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
