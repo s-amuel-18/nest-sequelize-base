@@ -6,6 +6,7 @@ import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { CommonModule } from './common/common.module';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   providers: [],
@@ -35,6 +36,8 @@ import { CommonModule } from './common/common.module';
     AuthModule,
 
     CommonModule,
+
+    ProductsModule,
   ],
   controllers: [],
 })
