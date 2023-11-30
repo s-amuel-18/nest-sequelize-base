@@ -9,10 +9,10 @@ export class PaginationDto {
   @IsOptional()
   @IsInt()
   @IsNotEmpty()
-  page?: number;
+  page?: number = 0;
 
   @IsOptional()
   @IsInt()
   @IsNotEmpty()
-  limit?: number;
+  limit?: number = 10;
 }
